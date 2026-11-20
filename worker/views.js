@@ -141,16 +141,18 @@ export function adminPage(objects, nextCursor, hasCursor = false) {
   const rows = objects.map(({ key, customMetadata, uploaded }) => {
     const { studentId, studentName, filename } = customMetadata;
     return '<tr><th scope="row">' + escape(studentId) + '</th><td>' + escape(studentName) +
-      '</td><td>' + escape(date.format(uploaded)) + '</td><td><a class="download-link" href="/admin/file/' +
-      encodeURIComponent(key.slice("submissions/".length)) + '" download>' + escape(filename) + '</a></td></tr>';
+      '</td><td>' + escape(date.format(uploaded)) + '</td><td><button class="button secondary" data-file="/admin/file/' +
+      encodeURIComponent(key.slice("submissions/".length)) + '" data-name="' +
+      escape(studentId + '_' + studentName + '_' + filename.replace(/\.hwpx?$/i, '') + '.pdf') + '">PDF 다운로드</button></td></tr>';
   }).join("");
   const results = rows ? '<div class="table-wrap"><table><thead><tr><th scope="col">학번</th><th scope="col">이름</th>' +
-    '<th scope="col">제출 시각</th><th scope="col">원본 파일</th></tr></thead><tbody>' + rows + '</tbody></table></div>' :
+    '<th scope="col">제출 시각</th><th scope="col">제출물 PDF</th></tr></thead><tbody>' + rows + '</tbody></table></div>' :
     '<div class="empty"><span class="file-icon" aria-hidden="true">한글</span><p>아직 제출된 활동지가 없어요.</p></div>';
   return layout("제출함", '<section class="panel admin-panel"><div class="admin-heading"><div>' +
     '<p class="eyebrow">통계 수행평가</p><h1>제출함</h1></div>' +
     '<form action="/admin/logout" method="post"><button type="submit" class="button secondary">로그아웃</button></form></div>' +
-    results + '<nav class="pagination" aria-label="제출 목록 페이지">' + (hasCursor ? '<a href="/admin">최신 제출</a>' : '') +
-    (nextCursor ? '<a href="/admin?cursor=' + encodeURIComponent(nextCursor) + '">이전 제출 더 보기</a>' : '') +
-    '</nav></section>', true);
+    (rows ? '<button class="button primary" id="pdf-all">모두 PDF 다운로드</button><p>여러 파일을 받을 때는 브라우저에서 다중 다운로드를 허용해 주세요.</p>' : '') +
+    '<p id="pdf-status" role="status"></p>' + results + '<nav class="pagination" aria-label="제출 목록 페이지">' + (hasCursor ? '<a href="/admin">최신 제출</a>' : '') +
+    (nextCursor ? '<a rel="next" href="/admin?cursor=' + encodeURIComponent(nextCursor) + '">이전 제출 더 보기</a>' : '') +
+    '</nav></section><script src="/pdf-download.js" defer></script>', true);
 }

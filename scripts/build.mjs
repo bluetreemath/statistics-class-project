@@ -6,6 +6,8 @@ const source = (path) => readFile(at(path), "utf8");
 const assets = {
   css: await source("worker/app.css"),
   js: await source("worker/app.js"),
+  pdfDownload: await source("worker/pdf-download.js"),
+  pdfWorker: [await source("docs/pdf-engine/rhwptopdf.umd.js"), await source("worker/pdf-convert.js"), await source("worker/pdf-worker.js")].join("\n"),
 };
 for (const name of ["worksheet.hwpx", "worksheet.pdf", "guide.pdf", "example.pdf"]) {
   assets[name] = (await readFile(at("materials/" + name))).toString("base64");

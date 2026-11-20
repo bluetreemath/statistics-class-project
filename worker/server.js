@@ -219,6 +219,12 @@ export default {
         if (pathname === "/project") return html(studentPage());
         if (pathname === "/app.css") return staticFile(assets.css, "text/css; charset=utf-8");
         if (pathname === "/app.js") return staticFile(assets.js, "application/javascript; charset=utf-8");
+        if (pathname === "/pdf-download.js") return staticFile(assets.pdfDownload, "application/javascript; charset=utf-8");
+        if (pathname === "/pdf-worker.js") {
+          const response = staticFile(assets.pdfWorker, "application/javascript; charset=utf-8");
+          response.headers.set("Content-Security-Policy", "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src https://bluetreemath.github.io");
+          return response;
+        }
         if (pathname.startsWith("/materials/")) {
           const id = pathname.slice("/materials/".length);
           if (Object.hasOwn(materials, id)) {
