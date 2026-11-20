@@ -15,7 +15,7 @@ function layout(title, content, admin = false) {
   return '<!doctype html><html lang="ko"><head><meta charset="utf-8">' +
     '<meta name="viewport" content="width=device-width, initial-scale=1">' +
     '<meta name="theme-color" content="#123e33"><title>' + escape(title) + ' | 수학 탐구실</title>' +
-    '<link rel="stylesheet" href="/app.css"></head><body>' +
+    '<link rel="stylesheet" href="/app.css?v=2"></head><body>' +
     '<header class="top"><div class="shell top-inner"><a class="brand" href="/">' + brand + '</a>' +
     (admin ? '<a class="top-link" href="/">학생 화면</a>' : '<a class="top-link" href="/admin">관리자</a>') +
     '</div></header><main class="shell">' + content + '</main>' +
@@ -28,6 +28,26 @@ const steps = [
   ["수치 비교", "세 연도에 공통으로 있는 항목 3개의 수치와 단위를 표에 적어요."],
   ["근거 설명", "비교 결과를 수치로 설명하고 더 알아보고 싶은 점을 정리해요."],
 ];
+
+export function entryPage() {
+  return layout("통계 프로젝트", `
+    <section class="hero entry-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">1학년 수학 · 통계 수행평가</p>
+        <h1>숫자로 발견하는<br>우리 생활</h1>
+        <p>관심 있는 주제를 하나 골라<br class="mobile-break"> 같은 통계의 세 연도를 비교해 봐요.</p>
+      </div>
+      <div class="panel entry-panel">
+        <h2>학생 참여</h2>
+        <form id="entry" action="/project" method="get">
+          <label for="entry-id">학번<input id="entry-id" placeholder="예: 10101" inputmode="numeric" pattern="[0-9]{1,12}" maxlength="12" required></label>
+          <label for="entry-name">이름<input id="entry-name" placeholder="예: 김하늘" maxlength="40" required></label>
+          <button class="button primary full" type="submit">활동 시작하기</button>
+        </form>
+      </div>
+    </section>
+    <script src="/app.js?v=2" defer></script>`);
+}
 
 export function studentPage() {
   const stepRows = steps.map(([title, description], index) =>
@@ -84,7 +104,7 @@ export function studentPage() {
         </form>
       </section>
     </div>
-    <script src="/app.js" defer></script>`.replace(/^\s*$/gm, ""));
+    <script src="/app.js?v=2" defer></script>`.replace(/^\s*$/gm, ""));
 }
 
 export function receiptPage(message, ok) {

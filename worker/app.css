@@ -69,6 +69,9 @@ h2 { font-size: 1.4rem; margin-bottom: 14px; }
 .resource small { color: var(--muted); font-size: .875rem; }
 .workspace { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
 .panel { padding: 23px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.entry-panel { color: #152d27; width: 100%; max-width: 365px; justify-self: end; }
+.entry-panel form { display: grid; gap: 12px; }
+.entry-panel h2 { margin-bottom: 13px; }
 .step-list { padding: 0; margin: 0 0 16px; list-style: none; }
 .step-list li { display: flex; gap: 11px; padding: 9px 0; align-items: start; }
 .step-list li + li { border-top: 1px solid #edf2ed; }
@@ -115,6 +118,7 @@ th, td { padding: 12px; border-bottom: 1px solid var(--line); white-space: nowra
 @media (max-width: 640px) {
   .top-inner { min-height: 60px; }
   .hero { grid-template-columns: 1fr; padding: 27px; border-radius: 16px; margin-top: 20px; gap: 19px; }
+  .entry-panel { justify-self: start; }
   .mobile-break { display: inline; }
   .hero-graph { padding: 13px 17px; }
   .graph-heading { margin-bottom: 9px; }

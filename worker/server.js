@@ -1,4 +1,4 @@
-import { adminEntry, adminPage, materials, receiptPage, studentPage } from "./views.js";
+import { adminEntry, adminPage, entryPage, materials, receiptPage, studentPage } from "./views.js";
 import { assets } from "./assets.js";
 
 const maxFileBytes = 15 * 1024 * 1024;
@@ -206,7 +206,8 @@ export default {
 
     try {
       if (method === "GET") {
-        if (pathname === "/") return html(studentPage());
+        if (pathname === "/") return html(entryPage());
+        if (pathname === "/project") return html(studentPage());
         if (pathname === "/app.css") return staticFile(assets.css, "text/css; charset=utf-8");
         if (pathname === "/app.js") return staticFile(assets.js, "application/javascript; charset=utf-8");
         if (pathname.startsWith("/materials/")) {
