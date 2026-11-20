@@ -1,0 +1,51 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#123e33"><title>통계 프로젝트 | 수학 탐구실</title><link rel="stylesheet" href="../app.css"></head><body><header class="top"><div class="shell top-inner"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>수학 탐구실</span></a><a class="top-link" href="https://statistics-class-project.bluetree7928.chatgpt.site/admin">관리자</a></div></header><main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">1학년 수학 · 통계 수행평가</p>
+        <h1>숫자로 발견하는<br>우리 생활</h1>
+        <p>관심 있는 주제를 하나 골라<br class="mobile-break"> 같은 통계의 세 연도를 비교해 봐요.</p>
+        <a class="button light" href="../materials/%ED%95%99%EC%83%9D%EC%9A%A9_%ED%99%9C%EB%8F%99%EC%A7%80.hwpx" download>한글 활동지 사본 받기</a>
+      </div>
+      <div class="hero-graph" aria-hidden="true">
+        <div class="graph-heading"><span></span><span></span><span></span></div>
+        <div class="graph-grid"><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="graph-axis"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+    <section class="section" aria-labelledby="materials-title">
+      <h2 id="materials-title">활동 자료</h2>
+      <div class="resource-grid">
+        <a class="resource" href="../materials/%ED%95%99%EC%83%9D%EC%9A%A9_%ED%99%9C%EB%8F%99%EC%A7%80.pdf" target="_blank" rel="noopener"><span class="file-icon" aria-hidden="true">PDF</span><span><strong>학생용 활동지</strong><small>활동지 미리보기</small></span></a>
+        <a class="resource" href="../materials/%EC%9E%91%EC%84%B1_%EC%83%98%ED%94%8C.pdf" target="_blank" rel="noopener"><span class="file-icon" aria-hidden="true">PDF</span><span><strong>작성 샘플</strong><small>수입품목 비교 사례</small></span></a>
+        <a class="resource" href="../materials/%EC%9E%90%EB%A3%8C%EC%B0%BE%EA%B8%B0_%EC%95%88%EB%82%B4.pdf" target="_blank" rel="noopener"><span class="file-icon" aria-hidden="true">PDF</span><span><strong>자료 찾기 안내</strong><small>KOSIS 통계놀이터 사용법</small></span></a>
+      </div>
+    </section>
+    <div class="workspace section">
+      <section class="panel instructions" aria-labelledby="steps-title">
+        <h2 id="steps-title">탐구 순서</h2>
+        <ol class="step-list"><li><span class="step-number">1</span><div><strong>주제 선택</strong><p>KOSIS 통계놀이터에서 관심 있는 통계와 탐구 질문을 정해요.</p></div></li><li><span class="step-number">2</span><div><strong>자료 수집</strong><p>같은 통계의 서로 다른 세 연도 화면을 캡처하고 출처를 적어요.</p></div></li><li><span class="step-number">3</span><div><strong>수치 비교</strong><p>세 연도에 공통으로 있는 항목 3개의 수치와 단위를 표에 적어요.</p></div></li><li><span class="step-number">4</span><div><strong>근거 설명</strong><p>비교 결과를 수치로 설명하고 더 알아보고 싶은 점을 정리해요.</p></div></li></ol>
+        <details><summary>제출 전 확인하기</summary><ul>
+          <li>주제와 탐구 질문을 썼어요.</li>
+          <li>세 연도의 통계 화면과 자료 출처를 넣었어요.</li>
+          <li>같은 항목의 수치를 표에 옮기고 단위를 썼어요.</li>
+          <li>비교 결과를 실제 수치로 설명했어요.</li>
+          <li>확인한 사실과 더 조사할 내용을 구분했어요.</li>
+        </ul></details>
+      </section>
+      <section class="panel submit" aria-labelledby="submit-title">
+        <h2 id="submit-title">활동지 제출</h2>
+        <form id="submission" action="https://statistics-class-project.bluetree7928.chatgpt.site/submit" method="post" enctype="multipart/form-data">
+          <div class="identity-fields">
+            <label for="studentId">학번<input id="studentId" name="studentId" placeholder="예: 10101" inputmode="numeric" pattern="[0-9]{1,12}" maxlength="12" required></label>
+            <label for="studentName">이름<input id="studentName" name="studentName" placeholder="예: 김하늘" maxlength="40" required></label>
+          </div>
+          <div class="upload">
+            <div class="upload-copy"><label for="file">작성한 한글 파일</label><span id="file-hint">HWPX 또는 HWP · 최대 15MB</span></div>
+            <input id="file" name="file" type="file" accept=".hwpx,.hwp" aria-describedby="file-hint" required>
+          </div>
+          <button class="button primary full" type="submit">제출하기</button>
+          <p id="submission-status" class="status" role="status" tabindex="-1" hidden></p>
+        </form>
+      </section>
+    </div>
+    <script src="../app.js" defer></script></main><footer class="shell footer">1학년 수학 · 통계 수행평가</footer></body></html>

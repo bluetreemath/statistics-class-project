@@ -121,9 +121,18 @@ function hasHwpxContents(bytes) {
   return false;
 }
 
+const pagesOrigin = "https://bluetreemath.github.io";
+
+function isPagesSubmission(request) {
+  return request.method === "POST" && new URL(request.url).pathname === "/submit" &&
+    request.headers.get("Origin") === pagesOrigin;
+}
+
 function submissionResult(request, message, status) {
   if (request.headers.get("Accept")?.includes("application/json")) {
-    return Response.json({ message }, { status, headers: { ...requestHeaders, "Cache-Control": "no-store" } });
+    const headers = { ...requestHeaders, "Cache-Control": "no-store", Vary: "Origin" };
+    if (isPagesSubmission(request)) headers["Access-Control-Allow-Origin"] = pagesOrigin;
+    return Response.json({ message }, { status, headers });
   }
   return html(receiptPage(message, status === 201), status);
 }
@@ -197,7 +206,7 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
     const { method } = request;
-    if (method === "POST") {
+    if (method === "POST" && !isPagesSubmission(request)) {
       const origin = request.headers.get("Origin");
       if ((origin && origin !== url.origin) || request.headers.get("Sec-Fetch-Site") === "cross-site") {
         return new Response("올바르지 않은 요청이에요.", { status: 403, headers: requestHeaders });
